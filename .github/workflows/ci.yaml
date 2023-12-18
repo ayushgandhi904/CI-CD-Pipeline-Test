@@ -5,8 +5,8 @@ name: CI Pipeline
 on:
   push:
 
-  jobs:
-    build:
+jobs:
+  build:
     runs-on: ubuntu-latest
 
     steps:
@@ -34,5 +34,11 @@ on:
         REPO_TOKEN: ${{secrets.GITHUB_TOKEN}}
       run: |
 
-      
+        echo "# First line of our report" >> report.md
+        echo "## Bar Plots" >> report.md
+        echo '![](./bars.png "Bar plot")' >> report.md
+        echo "## Line Plots" >> report.md
+        echo '![](./lines.png "Bar plot")' >> report.md
+
+        cml comment create report.md    
        
